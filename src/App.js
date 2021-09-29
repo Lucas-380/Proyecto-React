@@ -1,13 +1,18 @@
 import NavBar from "./components/navbar/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import ItemListContainer from "./components/main/ItemListContainer";
+import "../src/components/Stateless/fonts/font.css";
 
 function App() {
   return (
     <div>
+        <header>
+            <NavBar/>
+        </header>
         <main>
-            <header>
-                <NavBar/>
-            </header>
+            <ItemListContainer
+                greeting="Hola mundo"
+                text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempore perspiciatis modi sint fugiat aut dolore vel, ex amet aliquam mollitia dignissimos pariatur deleniti voluptatem eligendi sit temporibus ut adipisci."/>
         </main>
     </div>
   );
