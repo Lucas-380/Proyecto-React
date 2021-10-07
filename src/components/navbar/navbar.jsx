@@ -4,7 +4,8 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import CartWidget from '../Stateless/Icons/CartWidget';
 import { Button, Navbar, Nav, Container, NavDropdown, Form, FormControl } from 'react-bootstrap';
 
-export default function navbar() {
+export default function navbar({items}) {
+
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container fluid>
@@ -26,7 +27,8 @@ export default function navbar() {
                 </NavDropdown>
             </Nav>
 		<CartWidget 
-                    cart={faShoppingCart}/>
+                    cart={faShoppingCart}
+                    items={items} />
             <Form className="d-flex">
                 <FormControl
                 type="search"

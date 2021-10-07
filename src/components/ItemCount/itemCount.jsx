@@ -1,25 +1,33 @@
-import  React from 'react'
-import { Card, Button } from 'react-bootstrap'
-import './itemCount.css'
+import React, { useState } from 'react'
 
-const itemCount = ({stock, add, remove, initial}) => {
+const ItemCount = ({stock, items, setItems}) => {
 
+    const [amount , setAmount] = useState(0)
+
+    const addFn = () => {
+        if (amount < stock ) {
+            setAmount(amount+1)
+            setItems(items+1)
+        }
+        else{
+            alert('Ha alcanzado el limite de stock.')
+        }
+    }
+
+    const removeFn = () => {
+        if (amount > 0) {
+            setAmount(amount-1)
+            setItems(items-1)
+        }
+    }
 
     return (
-        <div className="m-5">
-            <Card style={{ width: '18rem' , margin:'auto' }}>
-                <Card.Header>Item Count</Card.Header>
-                <Card.Body>
-                    <Card.Title className="mb-2 text-muted mx-5">Stock Inicial = {stock}</Card.Title>
-                    <Card.Text>                        
-                        <Button className="btn-success" onClick={()=>add()}>+</Button>
-                        <h3 className="numberInitial">{initial}</h3>
-                        <Button className="btn-danger"  onClick={()=>remove()}>-</Button>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+        <div Style="text-align: center;">
+            <buttom onClick={ () => addFn()} className="btn btn-success m-3">+</buttom>
+            <p className="card-text m-3" Style="display: inline;">{amount}</p>
+            <buttom onClick={()=>removeFn()} className="btn btn-danger m-3">-</buttom>
         </div>
     )
 }
 
-export default itemCount
+export default ItemCount
