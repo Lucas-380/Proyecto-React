@@ -1,0 +1,11 @@
+.bg-footer{
+    background-color: rgb(26, 26, 26);
+    display: flex;
+    justify-content: center;
+    height: 70px;
+}
+.font-footer{
+    font-family: 'Recursive', sans-serif ;
+    font-size: 2rem;
+    color: #6610f2;
+}

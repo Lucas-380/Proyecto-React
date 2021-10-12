@@ -29,6 +29,7 @@ const ItemList = ({items, setItems}) => {
 
     return (
         <div className="row">
+            
             {result && result.map((producto =>
                     ( <Item
                         id={producto.id}
