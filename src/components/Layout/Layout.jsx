@@ -3,10 +3,10 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
 
-const Layout = ({children, items}) => {
+const Layout = ({children}) => {
     return (
         <>
-            <Header items={items}/>
+            <Header/>
   
                 { children }
 

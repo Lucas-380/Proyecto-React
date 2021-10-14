@@ -8,3 +8,6 @@
     margin: 0 5vh 0 5vh;
     font-family: 'Recursive', sans-serif;
 }
+.center{
+    --bs-gutter-x: 0;
+}

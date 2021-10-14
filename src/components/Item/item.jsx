@@ -1,25 +1,41 @@
-import React from 'react'
-import ItemCount from '../ItemCount/itemCount'
+import React from "react";
+import "./item.css";
+import { Link } from 'react-router-dom'
 
-    const Item = ({nombre, precio, img, stock, items, setItems}) => {
-
-
+const Item = ({ img, nombre, precio, category, id }) => {
     return (
-        <div className="my-4 col-lg-4">
-            <div className="card" Style="width: 18rem;">
-                <img src={img} className="card-img-top" alt="..."/>
-                <div className="card-body">
-                    <h5 className="card-title">{nombre}</h5>
-                    <p className="card-text">$ {precio}</p>
-                    <p className="card-text">Cantidad disponible = {stock}</p>
-                    <ItemCount
-                        items={items}
-                        setItems={setItems}
-                        stock={stock}/>
+    <div className="container page-wrapper col-lg-4" key={id}>
+      <div className="page-inner">
+        <div className="row">
+          <div className="el-wrapper">
+            <div className="box-up">
+              <img className="img" src={img} alt="" style={{ width: "10rem" }} />
+              <div className="img-info">
+                <div className="info-inner">
+                  <span className="p-name">{nombre}</span>
+                  <span className="p-company">...</span>
                 </div>
+                <div className="a-size">{category.toUpperCase()}</div>
+              </div>
             </div>
-        </div>
-    )
-}
+            <div className="box-down">
+              <div className="h-bg">
+                <div className="h-bg-inner"></div>
+              </div>
 
-export default Item
+              <div className="cart">
+                <span className="price">$ {precio}</span>
+                <span className="add-to-cart">
+                <Link to={`${category}/${id}`} className="txt" style={{textDecoration: "none"}}>+ info</Link>
+
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Item;

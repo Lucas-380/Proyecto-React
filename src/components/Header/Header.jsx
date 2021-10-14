@@ -2,22 +2,15 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import CartWidget from "../Stateless/Icons/CartWidget";
-import {
-  Button,
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Form,
-  FormControl,
-} from "react-bootstrap";
+import { Button, Navbar, Nav, Container, NavDropdown, Form, FormControl } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const Header = ({ items }) => {
+const Header = () => {
   return (
     <nav>
         <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#">Logo</Navbar.Brand>
+            <Link to="/" style={{textDecoration: "none"}}><Navbar.Brand>Logo</Navbar.Brand></Link>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -25,14 +18,14 @@ const Header = ({ items }) => {
                 style={{ maxHeight: "100px" }}
                 navbarScroll
             >
-                <Nav.Link href="#action1">Home</Nav.Link>
-                <Nav.Link href="#action2">About us</Nav.Link>
+                <Link to="/" style={{textDecoration: "none"}}><Nav.Link>Home</Nav.Link></Link>
+                <Nav.Link>About us</Nav.Link>
                 <NavDropdown title="Redes" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Instagram</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Twitter</NavDropdown.Item>
+                <NavDropdown.Item >Instagram</NavDropdown.Item>
+                <NavDropdown.Item >Twitter</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
-            <CartWidget cart={faShoppingCart} items={items} />
+            <CartWidget cart={faShoppingCart}/>
             <Form className="d-flex">
                 <FormControl
                 type="search"

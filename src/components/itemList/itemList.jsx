@@ -1,47 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import Item from '../Item/item'
+import { Api } from '../Stateless/Api/Api'
+import './itemList.css'
 
-const ItemList = ({items, setItems}) => {
+const ItemList = ({greeting, text}) => {
 
-    const [result, setResult] = useState(null)
-
-    const productos = new Promise ((resolve, reject) => {
-        setTimeout(() => {
-            resolve([
-                { id: 0 , nombre:'producto 1' , precio:5000 , stock:10 , img:"https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" },
-                { id: 1 , nombre:'producto 2' , precio:8000 , stock:20 , img:"https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
-                { id: 2 , nombre:'producto 3' , precio:1000 , stock:30 ,  img:"https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"},
-            ])
-        }, 2000);
-    }) 
+    const endpoint = '?limit=6'
+    const [prod, setProd] = useState([])
 
     useEffect(() => {
-        if(!result){
-            productos.then((res, err) => {
-                if (res) console.log(res)
-                setResult(res)
-            }).catch((error) => {
-                console.log(error)
-            }).finally(()=>console.log('operacion finalizada'))
-        }
-        console.log(result);
-    }, [result])
+            Api.get(endpoint)
+                .then(res => {
+                    // console.log(res)
+                    const { data } = res
+                    setProd(data)
+                })
+    }, [endpoint])
 
     return (
-        <div className="row">
-            
-            {result && result.map((producto =>
-                    ( <Item
-                        id={producto.id}
-                        nombre={producto.nombre}
-                        precio={producto.precio}
-                        stock={producto.stock}
-                        img={producto.img}
-                        items={items}
-                        setItems={setItems}
-                    />)
-                ))
-            }
+        <div className="container ">
+            <div className="row center">
+                <h1 className="titleDetailContainer">{greeting}</h1>
+                <p className="textDetailContainer">{text}</p>
+
+                { prod && prod.map((prods => 
+                    (<Item
+                        key={prods.id}
+                        id={prods.id}
+                        category={prods.category}
+                        nombre={prods.title}
+                        precio={prods.price}
+                        img={prods.image}
+                        />) 
+                    ))
+                }
+            </div>
         </div>
     )
 }

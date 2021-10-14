@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/Layout/Layout";
 import ItemListContainer from './components/itemListContainer/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
+import { BrowserRouter , Switch , Route } from 'react-router-dom'
 
 
 function App() {
-  
-    const [items, setItems] = useState(0);
-
     return (
     <>
+        <BrowserRouter>
         <Layout>
-            <ItemDetailContainer
-                greeting="Title"
-                text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempore perspiciatis modi sint fugiat aut dolore vel, ex amet aliquam mollitia dignissimos pariatur deleniti voluptatem eligendi sit temporibus ut adipisci."/>
-                
-            <ItemListContainer
-                    greeting="Title"
-                    text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempore perspiciatis modi sint fugiat aut dolore vel, ex amet aliquam mollitia dignissimos pariatur deleniti voluptatem eligendi sit temporibus ut adipisci."
-                    items={items}
-                    setItems={setItems}/>
-
-
+            <Switch>
+                <Route exact path='/'>
+                    <ItemListContainer
+                        greeting="Title"
+                        text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempore perspiciatis modi sint fugiat aut dolore vel, ex amet aliquam mollitia dignissimos pariatur deleniti voluptatem eligendi sit temporibus ut adipisci."/>
+                </Route>
+                <Route exact path='/:category/:id'>
+                    <ItemDetailContainer/>
+                </Route>
+            </Switch>
         </Layout>
+    </BrowserRouter>
     </>
   );
 }

@@ -1,22 +1,50 @@
 // Card para la API
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ItemDetail.css";
+import { useParams } from "react-router";
+import axios from "axios";
+import ItemCount from "../ItemCount/itemCount";
 
-const ItemDetail = ({ img, nombre, precio }) => {
+const ItemDetail = () => {
+
+    const {id} = useParams()
+    console.log(id);
+
+    const [producto, setProducto] = useState("")
+
+    const getProducto = async () => {
+        try{
+            const  respuesta = await axios.get(`https://fakestoreapi.com/products/${id}`)
+            console.log(respuesta.data);
+            setProducto(respuesta.data)
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        getProducto()
+    },[])
+
+
   return (
     <div className="container page-wrapper col-lg-4">
       <div className="page-inner">
-        <div className="">
+        <div className="row">
           <div className="el-wrapper">
             <div className="box-up">
-              <img className="img" src={img} alt="" Style="width: 10rem;" />
+              <img className="img" src={producto && producto.image} alt="" style={{width: "10rem"}} />
               <div className="img-info">
                 <div className="info-inner">
-                  <span className="p-name">{nombre}</span>
-                  <span className="p-company">...</span>
+                  <span className="p-name">{producto && producto.title}</span>
+                  <span className="p-company">stock disponible = {producto && producto.rating.count}</span>
                 </div>
-                <div className="a-size">PS4 - PS5</div>
+                <div className="a-size" style={{fontSize:"0.7rem", color:"black"}}>
+                    {producto && producto.description}
+                    
+                </div>
               </div>
             </div>
 
@@ -25,15 +53,17 @@ const ItemDetail = ({ img, nombre, precio }) => {
                 <div className="h-bg-inner"></div>
               </div>
 
-              <a className="cart" href="#">
-                <span className="price">$ {precio}</span>
+              <div className="cart">
+                <span className="price">${producto && producto.price}</span>
                 <span className="add-to-cart">
-                  <span className="txt">Añadir al carrito</span>
+                  <span className="txt">COMPRAR</span>
                 </span>
-              </a>
+              </div>
             </div>
           </div>
         </div>
+        <ItemCount
+            stock={producto && producto.rating.count}/>
       </div>
     </div>
   );
