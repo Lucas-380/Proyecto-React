@@ -5,6 +5,7 @@ import "./ItemDetail.css";
 import { useParams } from "react-router";
 import axios from "axios";
 import ItemCount from "../ItemCount/itemCount";
+import { Link } from "react-router-dom";
 
 const ItemDetail = () => {
 
@@ -56,7 +57,7 @@ const ItemDetail = () => {
               <div className="cart">
                 <span className="price">${producto && producto.price}</span>
                 <span className="add-to-cart">
-                  <span className="txt">COMPRAR</span>
+                    <Link to="/cart" style={{textDecoration: "none"}} className="txt">Finalizar Compra</Link>
                 </span>
               </div>
             </div>
