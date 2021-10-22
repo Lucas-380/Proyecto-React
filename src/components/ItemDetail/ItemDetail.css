@@ -86,14 +86,14 @@ body {
 }
 
 .el-wrapper:hover .info-inner {
-  bottom: 155px;
+  bottom: 230px;
 }
 
 .el-wrapper:hover .a-size {
   -webkit-transition-delay: 300ms;
   -o-transition-delay: 300ms;
   transition-delay: 300ms;
-  bottom: 50px;
+  bottom: 10px;
   opacity: 1;
 }
 

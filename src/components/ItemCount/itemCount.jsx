@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './itemCount.css'
 
-const ItemCount = ({ stock , id , onAdd  }) => {
+const ItemCount = ({ stock , setVisible , onAdd  }) => {
 
     const [amount , setAmount] = useState(1)
 
@@ -15,7 +15,7 @@ const ItemCount = ({ stock , id , onAdd  }) => {
     }
 
     const removeFn = () => {
-        if (amount > 0) {
+        if (amount > 1) {
             setAmount(amount-1)
         }
     }
@@ -25,7 +25,7 @@ const ItemCount = ({ stock , id , onAdd  }) => {
 
     return (
         <div className="container">
-            <div className="">
+            <div className="my-1">
                 <button onClick={ ()=>addFn() } className="btn-count" >+</button>
                 <p className="card-text " style={{display: "inline"}}>{amount}</p>
                 <button onClick={()=>removeFn()} className="btn-count">-</button>

@@ -16,7 +16,6 @@ const Header = () => {
             <Nav
                 className="me-auto my-2 my-lg-0"
                 style={{ maxHeight: "100px" }}
-                navbarScroll
             >
                 <Link to="/" style={{textDecoration: "none"}}><Nav.Link>Home</Nav.Link></Link>
                 <Nav.Link>About us</Nav.Link>

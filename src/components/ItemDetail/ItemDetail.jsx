@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/itemCount";
 import { Link } from "react-router-dom";
@@ -7,12 +7,18 @@ import { useCartContext } from "../../context/cartContext"
 
 const ItemDetail = ({ producto }) => {
 
+    const [visible, setVisible] = useState(true)
     const {cartList, addProd} = useCartContext()
     console.log(cartList);
 
     const onAdd=(count)=>{
         console.log(count)
+        setVisible(false)
         addProd( { producto: producto , cantidad: count } )
+    }
+
+    const contador = () => {
+        setVisible(true)
     }
 
   return (
@@ -29,11 +35,21 @@ const ItemDetail = ({ producto }) => {
                 </div>
                 <div className="a-size" style={{fontSize:"0.7rem", color:"black"}}>
                     {producto && producto.description}
+
+                    {visible ?
                     <ItemCount
                         stock={producto && producto.rating.count}
                         id={producto && producto.id}
                         producto={producto && producto}
-                        onAdd={onAdd}/>
+                        onAdd={onAdd}
+                        setVisible={setVisible}/>
+                        :
+                        <div style={{position:"inline"}}>
+                            <button onClick={ ()=> contador() } className="btn btn-primary" >Seguir agregando productos</button>
+                            <Link to="/" className="btn btn-primary my-1" >Seguir comprando</Link>
+                        </div>
+                    }
+
                 </div>
               </div>
             </div>
