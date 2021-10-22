@@ -1,34 +1,19 @@
-// Card para la API
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ItemDetail.css";
-import { useParams } from "react-router";
-import axios from "axios";
 import ItemCount from "../ItemCount/itemCount";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/cartContext"
 
-const ItemDetail = () => {
 
-    const {id} = useParams()
-    console.log(id);
+const ItemDetail = ({ producto }) => {
 
-    const [producto, setProducto] = useState("")
+    const {cartList, addProd} = useCartContext()
+    console.log(cartList);
 
-    const getProducto = async () => {
-        try{
-            const  respuesta = await axios.get(`https://fakestoreapi.com/products/${id}`)
-            console.log(respuesta.data);
-            setProducto(respuesta.data)
-        }
-        catch(err){
-            console.log(err);
-        }
+    const onAdd=(count)=>{
+        console.log(count)
+        addProd( { producto: producto , cantidad: count } )
     }
-
-    useEffect(() => {
-        getProducto()
-    },[])
-
 
   return (
     <div className="container page-wrapper col-lg-4">
@@ -44,7 +29,11 @@ const ItemDetail = () => {
                 </div>
                 <div className="a-size" style={{fontSize:"0.7rem", color:"black"}}>
                     {producto && producto.description}
-                    
+                    <ItemCount
+                        stock={producto && producto.rating.count}
+                        id={producto && producto.id}
+                        producto={producto && producto}
+                        onAdd={onAdd}/>
                 </div>
               </div>
             </div>
@@ -63,8 +52,7 @@ const ItemDetail = () => {
             </div>
           </div>
         </div>
-        <ItemCount
-            stock={producto && producto.rating.count}/>
+        
       </div>
     </div>
   );

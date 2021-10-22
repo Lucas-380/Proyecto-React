@@ -1,0 +1,17 @@
+.btn-count{
+    background-color: #3f96cd;
+    font-size:large;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    margin: 0rem 2rem 0 2rem;
+}
+
+.btn-carrito{
+    background-color: rgb(81, 151, 81);
+    margin: 1rem 0 0sadsa 0;
+    border:none;
+    border-radius: 5px;
+    font-size: larger;
+}

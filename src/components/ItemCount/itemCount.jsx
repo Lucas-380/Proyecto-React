@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import './itemCount.css'
 
-const ItemCount = ({stock}) => {
+const ItemCount = ({ stock , id , onAdd  }) => {
 
-    const [amount , setAmount] = useState(0)
+    const [amount , setAmount] = useState(1)
 
     const addFn = () => {
         if (amount < stock ) {
@@ -18,12 +19,18 @@ const ItemCount = ({stock}) => {
             setAmount(amount-1)
         }
     }
+    const addCart=()=>{
+        onAdd(amount)
+    }
 
     return (
-        <div style={{margin: "0 0 7rem 6rem"}}>
-            <button onClick={ () => addFn()} className="btn btn-success" >+</button>
-            <p className="card-text mx-5" style={{display: "inline"}}>{amount}</p>
-            <button onClick={()=>removeFn()} className="btn btn-danger">-</button>
+        <div className="container">
+            <div className="">
+                <button onClick={ ()=>addFn() } className="btn-count" >+</button>
+                <p className="card-text " style={{display: "inline"}}>{amount}</p>
+                <button onClick={()=>removeFn()} className="btn-count">-</button>
+            </div>
+            <button onClick={ addCart } className="btn-carrito" >Agregar al Carrito</button>
         </div>
     )
 }
