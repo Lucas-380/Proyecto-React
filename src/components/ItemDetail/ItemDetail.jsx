@@ -8,11 +8,9 @@ import { useCartContext } from "../../context/cartContext"
 const ItemDetail = ({ producto }) => {
 
     const [visible, setVisible] = useState(true)
-    const {cartList, addProd} = useCartContext()
-    console.log(cartList);
+    const { addProd } = useCartContext()
 
     const onAdd=(count)=>{
-        console.log(count)
         setVisible(false)
         addProd( { producto: producto , cantidad: count } )
     }
