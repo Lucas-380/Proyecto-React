@@ -1,28 +1,37 @@
 import React from 'react'
-import { Badge } from "react-bootstrap";
 import { useCartContext } from "../../context/cartContext";
-
+import './itemCart.css'
 
 const ItemCart = ({id, price, image, title, cantidad, category}) => {
 
     const {delProd} = useCartContext()
 
     return (
-            <div key={id} className="row col-lg" >
-                <img src={image} className="img-thumbnail" style={{width: "10rem", height:"auto"}} alt=""/>
-                <div className="col-lg-7 row">
-                    <h3 className="col-lg-12">{title}</h3>
-                    <span><Badge bg="dark" className="mx-1">Categoria</Badge>{category}</span>
-                    <span><Badge bg="dark" className="mx-1">Cantidad</Badge>{cantidad}</span>
-                    <span><Badge bg="dark" className="mx-1">Precio</Badge>$ {price}</span>
-                    <span><Badge bg="dark" className="mx-1">Subtotal</Badge>$ {price * cantidad}</span>
-                    <button className="btn btn-danger" style={{width:"2rem", marginLeft:"100%"}}
-                    onClick={() => delProd(id)}
-                        >X
-                    </button>
+        <div className="Cart-Items ">
+
+                <div className="image-box">
+                    <img src={image} alt="" style={{ height:"120px" }} />
                 </div>
-                <hr className="mt-2" style={{width:"75%"}}/>
-            </div>
+                <div className="about">
+                    <h1 className="title mb-4">{title}</h1>
+                    <h3 className="subtitle mb-4">{category}</h3>
+                    {/* <img src="" style={{ height:"30px" }}/> */}
+                </div>
+
+
+
+                <div className="counter">
+                    {/* <div className="btnCount">+</div> */}
+                    <div className="count">{cantidad}</div>
+                    {/* <div className="btnCount">-</div> */}
+                </div>
+                <div className="prices ">
+                    <div className="amount">${price}</div>
+                    <div className="save"><u>Save for later</u></div>
+                    <div className="remove" onClick={() => delProd(id)}><u>Remove</u></div>
+                </div>
+
+        </div>
     )
 }
 

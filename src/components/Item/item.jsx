@@ -9,13 +9,13 @@ const Item = ({ img, nombre, precio, category, id }) => {
         <div className="row">
           <div className="el-wrapper">
             <div className="box-up">
-              <img className="img" src={img} alt="" style={{ width: "10rem" }} />
+              <img className="img" src={img} alt="" style={{ width: "14rem" }} />
               <div className="img-info">
                 <div className="info-inner">
-                  <span className="p-name">{nombre}</span>
-                  <span className="p-company">...</span>
+                    <span className="p-name">{nombre}</span>
+                    <span className="p-company">{category}</span>
                 </div>
-                <div className="a-size">{category.toUpperCase()}</div>
+                <div className="a-size">12 cuotas sin interés de ${(precio / 12).toFixed(2)}</div>
               </div>
             </div>
             <div className="box-down">

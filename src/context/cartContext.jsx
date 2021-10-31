@@ -1,4 +1,4 @@
-import React, { createContext , useContext, useState } from 'react'
+import React, { createContext , useContext, useEffect, useState } from 'react'
 
 const CartContext = createContext([])
 export const useCartContext = () => useContext(CartContext)
@@ -6,6 +6,15 @@ export const useCartContext = () => useContext(CartContext)
 function CartContextProvider({children}){
 
     const [cartList, setCartList] = useState( [] )
+
+    useEffect(() => {
+        if ("carrito" in localStorage) {
+            let carrito = JSON.parse(localStorage.getItem("carrito"))
+            setCartList(carrito)
+        }else{
+            localStorage.setItem("carrito", "[]" );
+        }
+    }, [])
 
 
     const addProd =({producto, cantidad})=>{
@@ -20,15 +29,18 @@ function CartContextProvider({children}){
             qty = cantidad;
         }
         setCartList([...newCart, {producto: producto, cantidad:qty}])
+        AlmacenamientoLocal([...newCart, {producto: producto, cantidad:qty}])
     }
 
     const removeCart =()=>{
         setCartList([])
+        localStorage.setItem("carrito", "[]" );
     }
     
     const delProd = (id) => {
         const prod = cartList.filter((prod) => prod.producto.id !== id)
         setCartList(prod)
+        localStorage.setItem("carrito", JSON.stringify(prod))
     }
 
     let subtotales = cartList && cartList.map((prod) => prod.producto.price * prod.cantidad)
@@ -37,6 +49,10 @@ function CartContextProvider({children}){
     let cant = cartList && cartList.map((c) => c.cantidad + 0)
     let cantCart = cant.reduce((a, b) => a + b, 0)
 
+    function AlmacenamientoLocal(cart) {
+        localStorage.setItem("carrito", JSON.stringify(cart))
+    }
+    
     return(
         <CartContext.Provider value= {{
             cartList,

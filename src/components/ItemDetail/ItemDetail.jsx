@@ -6,6 +6,7 @@ import { useCartContext } from "../../context/cartContext"
 
 
 const ItemDetail = ({ producto }) => {
+    const {image, title, price, description, rating, id, category, stock } = producto
 
     const [visible, setVisible] = useState(true)
     const { addProd } = useCartContext()
@@ -18,56 +19,58 @@ const ItemDetail = ({ producto }) => {
     const contador = () => {
         setVisible(true)
     }
-
+    
   return (
-    <div className="container page-wrapper col-lg-4">
-      <div className="page-inner">
-        <div className="row">
-          <div className="el-wrapper">
-            <div className="box-up">
-              <img className="img" src={producto && producto.image} alt="" style={{width: "10rem"}} />
-              <div className="img-info">
-                <div className="info-inner">
-                  <span className="p-name">{producto && producto.title}</span>
-                  <span className="p-company">stock disponible = {producto && producto.rating.count}</span>
+    <div className="card">
+        <div className="card__title">
+            <div className="icon">
+                <div></div>
+            </div>
+            <h3>⭐{rating}</h3>
+        </div>
+        <div className="card__body">
+            <div className="half">
+                <div className="featured_text">
+                    <h4>{title}</h4>
+                    <p className="sub">{category}</p>
+                    <p className="price">${price}</p>
                 </div>
-                <div className="a-size" style={{fontSize:"0.7rem", color:"black"}}>
-                    {producto && producto.description}
-
-                    {visible ?
+                <div className="image">
+                    <img src={image} alt="" style={{width:"20rem"}}/>
+                </div>
+            </div>
+            <div className="half">
+                
+                <span className="stock">Stocks disponible</span>
+                <div className="reviews">
+                    <span>({stock} stocks)</span>
+                </div>
+                {visible ?
                     <ItemCount
-                        stock={producto && producto.rating.count}
-                        id={producto && producto.id}
+                        stock={stock}
+                        id={id}
                         producto={producto && producto}
                         onAdd={onAdd}
                         setVisible={setVisible}/>
                         :
-                        <div style={{position:"inline"}}>
-                            <button onClick={ ()=> contador() } className="btn btn-primary" >Seguir agregando productos</button>
-                            <Link to="/" className="btn btn-primary my-1" >Seguir comprando</Link>
+                        <div className="mt-4" style={{position:"inline"}}>
+                            <button onClick={ ()=> contador() } className="btn-carrito" >Seguir agregando productos</button>
                         </div>
                     }
-
+                <div className="description">
+                    <p>{description}</p>
                 </div>
-              </div>
             </div>
-
-            <div className="box-down">
-              <div className="h-bg">
-                <div className="h-bg-inner"></div>
-              </div>
-
-              <div className="cart">
-                <span className="price">${producto && producto.price}</span>
-                <span className="add-to-cart">
-                    <Link to="/cart" style={{textDecoration: "none"}} className="txt">Finalizar Compra</Link>
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
-        
-      </div>
+        <div className="card__footer">
+            <div className="recommend">
+            <p>Recomendado por</p>
+            <h3>Lucas Dure  😜</h3>
+        </div>
+            <div className="action">
+                <Link to ="/"><button type="button">Volver al catalogo ↩</button></Link>
+            </div>
+        </div>
     </div>
   );
 };

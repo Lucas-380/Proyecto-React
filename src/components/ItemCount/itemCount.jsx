@@ -25,9 +25,9 @@ const ItemCount = ({ stock , setVisible , onAdd  }) => {
 
     return (
         <div className="container">
-            <div className="my-1">
+            <div className="my-1 div-counter">
                 <button onClick={ ()=>addFn() } className="btn-count" >+</button>
-                <p className="card-text " style={{display: "inline"}}>{amount}</p>
+                <p className="card-text num-count" style={{display: "inline", marginTop: "1.5rem"}}>{amount}</p>
                 <button onClick={()=>removeFn()} className="btn-count">-</button>
             </div>
             <button onClick={ addCart } className="btn-carrito" >Agregar al Carrito</button>

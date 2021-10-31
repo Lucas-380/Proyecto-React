@@ -10,3 +10,10 @@ html {
     margin: 0;
     margin-bottom: 40px;
   }
+  body {
+    background-image: linear-gradient(to right bottom, #8f94bd, #787dad, #4e5488, #363d7c, #232b6e);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
