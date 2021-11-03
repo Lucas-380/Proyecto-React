@@ -14,16 +14,11 @@ const ItemDetailContainer = () => {
         try{
             const db = getFirestore()
             db.collection('Items').doc( `${id}` ).get().then(r => setProducto( { id: r.id, ...r.data() } ) )
-
-            // const  respuesta = await axios.get(`https://fakestoreapi.com/products/${id}`)
-            // setProducto(respuesta.data)
         }
         catch(err){
             console.log(err);
         }
     }
-    
-    console.log(producto);
 
     useEffect(() => {
         setTimeout(() => {
@@ -31,15 +26,6 @@ const ItemDetailContainer = () => {
         }, 3000);
         getProducto()
     }, [])
-
-    // useEffect(() => {
-    //     if( producto === [] ){
-    //         setLoading(false)
-    //     }else{
-    //         getProducto()
-    //     }
-    // }, producto)
-
 
     return (
         <>

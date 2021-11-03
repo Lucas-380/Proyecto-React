@@ -174,3 +174,11 @@
 	 color: #115dd8;
 }
  
+@media (max-width: 800px) {
+	.card .card__body {
+		padding: 0px;
+		display:inline;
+		flex-flow: row no-wrap;
+		margin-bottom: 25px;
+   }
+  }

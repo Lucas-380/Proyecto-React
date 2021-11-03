@@ -12,13 +12,10 @@ const ItemList = () => {
     useEffect(() => {
         const db = getFirestore()
         db.collection('Items').get()
-        .then(r => setProd(r.docs.map(prod => ({ id: prod.id, ...prod.data() }) ) ) )
-
-        // db.collection('Items').doc( 'lg7vbRReuTeyGYIVizeH').get()
-        // .then(r => setProd( { id: r.id, ...r.data() } ) )
+        .then(r => setProd(r.docs.map(prod => ({ id: prod.id, ...prod.data() }))))
+        .catch(err => console.log(err))
     },[])
 
-    console.log(prod);
 
     return (
         <div className="container ">
