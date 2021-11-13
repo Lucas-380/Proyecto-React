@@ -72,7 +72,7 @@
   }
   
   .el-wrapper:hover .img {
-    webkit-filter: blur(7px);
+    -webkit-filter: blur (7px);
     -o-filter: blur(7px);
     -ms-filter: blur(7px);
     filter: blur(7px);
@@ -271,4 +271,6 @@
     text-transform: uppercase;
     white-space: nowrap;
   }
-  
+  .textCuotas{
+    color: rgb(255, 102, 0);
+  }

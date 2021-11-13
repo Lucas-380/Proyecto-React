@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./ItemDetail.css";
-import ItemCount from "../ItemCount/itemCount";
+import ItemCount from "../../ItemCount/itemCount";
 import { Link } from "react-router-dom";
-import { useCartContext } from "../../context/cartContext"
-
+import { useCartContext } from "../../../context/cartContext"
 
 const ItemDetail = ({ producto }) => {
     const {image, title, price, description, rating, id, category, stock } = producto
@@ -15,7 +14,6 @@ const ItemDetail = ({ producto }) => {
         setVisible(false)
         addProd( { producto: producto , cantidad: count } )
     }
-
     const contador = () => {
         setVisible(true)
     }
@@ -23,9 +21,7 @@ const ItemDetail = ({ producto }) => {
   return (
     <div className="card">
         <div className="card__title">
-            <div className="icon">
-                <div></div>
-            </div>
+            <div className="icon"></div>
             <h3>⭐{rating}</h3>
         </div>
         <div className="card__body">
@@ -40,7 +36,6 @@ const ItemDetail = ({ producto }) => {
                 </div>
             </div>
             <div className="half">
-                
                 <span className="stock">Stocks disponible</span>
                 <div className="reviews">
                     <span>({stock} stocks)</span>
@@ -65,7 +60,7 @@ const ItemDetail = ({ producto }) => {
         <div className="card__footer">
             <div className="recommend">
             <p>Recomendado por</p>
-            <h3>Lucas Dure  😜</h3>
+            <h3>JoyPlay 😜</h3>
         </div>
             <div className="action">
                 <Link to ="/"><button type="button">Volver al catalogo ↩</button></Link>

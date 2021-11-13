@@ -4,7 +4,7 @@ import './itemCart.css'
 
 const ItemCart = ({id, price, image, title, cantidad, category}) => {
 
-    const {delProd} = useCartContext()
+    const { delProd } = useCartContext()
 
     return (
         <div>
@@ -20,9 +20,7 @@ const ItemCart = ({id, price, image, title, cantidad, category}) => {
                     <span>{category}</span>
                 </div>
                 <div className="quantity mx-5">
-                    {/* <button className="plus-btn botones mx-2" type="button" name="button">+</button> */}
                         <h4 className="cantidad">{cantidad}</h4>
-                    {/* <button className="minus-btn botones mx-2" type="button" name="button">-</button> */}
                 </div>
 
                 <div className="total-price">$ {price}</div>

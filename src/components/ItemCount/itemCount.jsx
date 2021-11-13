@@ -13,7 +13,6 @@ const ItemCount = ({ stock , onAdd  }) => {
             alert('Ha alcanzado el limite de stock.')
         }
     }
-
     const removeFn = () => {
         if (amount > 1) {
             setAmount(amount-1)

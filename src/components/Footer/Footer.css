@@ -1,18 +1,67 @@
-.footer {
-    position:inherit;
-    left:0px;
-    bottom:0px;
-    height:30px;
-    width:100%;
+footer {
+    background-color: #1b1b1b;
+    position: relative;
+    bottom: -15vh;
   }
-.bg-footer{
-    background-color: rgb(26, 26, 26);
+  .footer__separador {
+    border-right: solid 3px #dbdbdb;
+    border-left: solid 3px #dbdbdb;
+    margin: 4vh 0;
+  }
+  .centrado{
+      margin: 4vh 0;
+  }
+  
+  @media (max-width: 767px) {
+    .footer__separador {
+        border-left: hidden;
+        border-right: hidden;
+    }
+}
+
+.textFooter{
+    color: white;
+    font-size: 1.5rem;
+}
+.textFooter-lg{
+    color: white;
+    font-size: 2.5rem;
+}
+.svg-ig{
+    background-image: url("../Stateless/svg/Footer-svg/instagram.svg");
+    background-repeat:no-repeat ;
+    width: 50px;
+}
+.svg-fc{
+    background-image: url("../Stateless/svg/Footer-svg/facebook.svg");
+    background-repeat:no-repeat ;
+    width: 50px;
+}
+.svg-tw{
+    background-image: url("../Stateless/svg/Footer-svg/twitter.svg");
+    background-repeat:no-repeat ;
+    width: 50px;
+}
+.redes{
+    margin: 6vh 0;
     display: flex;
     justify-content: center;
-    height: 70px;
 }
-.font-footer{
-    font-family: 'Recursive', sans-serif ;
-    font-size: 2rem;
-    color: #6610f2;
+.svg-payPal{
+    background-image: url("../Stateless/svg/Footer-svg/paypal.svg");
+    background-repeat:no-repeat ;
+    width: 40px;
+}
+.svg-masterCard{
+    background-image: url("../Stateless/svg/Footer-svg/mastercard.svg");
+    background-repeat:no-repeat ;
+    width: 50px;
+}
+.svg-visa{
+    background-image: url("../Stateless/svg/Footer-svg/visa.svg");
+    background-repeat:no-repeat ;
+    width: 50px;
+}
+li{
+    list-style: none;
 }

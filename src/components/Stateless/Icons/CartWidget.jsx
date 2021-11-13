@@ -9,13 +9,10 @@ const CartWidget = ( {cart} ) => {
 
     return (
                 <Link to="/cart" style={{textDecoration:"none"}}>
-                    {cantCart && cantCart ? (
                         <span className="icons">
-                            {cantCart && cantCart}
+                            {cantCart() && cantCart()}
                             <FontAwesomeIcon icon={cart} className="mx-1" />
-                        </span>
-                    ):  <></>
-                    }         
+                        </span>   
                 </Link>
     )
 }

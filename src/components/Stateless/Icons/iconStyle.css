@@ -1,5 +1,16 @@
 .icons{
     margin-right: 3vh;
     font-size: 25px;
-    color: whitesmoke;
+    color: #ffffff;
+    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: solid 2px rgba(36, 149, 255, 0);
+    border-radius: 50px;
+    transition-duration: 0.2s;
+}
+.icons:hover{
+    color: rgb(36, 149, 255);
+    border: solid 2px rgb(36, 149, 255);
+    transition-duration: 0.2s;
 }

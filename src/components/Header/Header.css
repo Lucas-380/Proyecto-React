@@ -1,0 +1,39 @@
+/*----------------------------------------LOGO----------------------------------------------*/
+.logo{
+    background: url("../Stateless/svg/logoJoyPlay.svg") no-repeat center;
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+.logo:hover{
+    width: 100px;
+    height: 100px;
+    transition-duration: 0.2s;
+}
+/*---------------------------------------------------------------------------------------------*/
+.personalizado{
+    background: rgba(255, 255, 255, 0.507);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.541) 100%); 
+}
+.styleNav{
+    padding: 5.5px;
+    color: #6610f2 !important;
+    transition-duration: 0.2s;
+}
+.styleNav:hover{
+    color: rgb(36, 204, 255) !important;
+    transition-duration: 0.2s;
+}
+
+
+.navBarCenter{
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 800px) {
+    header{
+        height: auto;
+    }
+}

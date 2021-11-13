@@ -1,19 +1,24 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 /* Css general */
 html {
     min-height: 100%;
     position: relative;
   }
+  header{
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: 'Recursive', sans-serif;
+  }
   body {
     margin: 0;
     margin-bottom: 40px;
   }
   body {
-    background-image: linear-gradient(to right bottom, #8f94bd, #787dad, #4e5488, #363d7c, #232b6e);
-    height: 100%;
+    background-image: linear-gradient(to right bottom, #1f87e9, #176bb9, #125492, #09365f, #05203a);
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+  }

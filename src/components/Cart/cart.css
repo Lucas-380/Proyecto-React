@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+.shopping-cart {
+    width: 750px;
+    height: auto;
+    margin: 80px auto;
+    background: #FFFFFF;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.title {
+    height: 60px;
+    border-bottom: 1px solid #E1E8EE;
+    padding: 20px 30px;
+    color: #5E6977;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.Header{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Action{
+	font-size: 14px;
+	font-family: 'Open Sans';
+	font-weight: 600;
+	color: #E44C4C;
+	cursor: pointer;
+	border-bottom: 1px solid #E44C4C;
+}
+
+.checkout{
+	float: right;
+	margin: 0 5%;
+	width: auto;
+}
+
+.total{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.Subtotal{
+	font-size: 22px;
+	font-family: 'Open Sans';
+	font-weight: 700;
+	color: #202020;
+}
+
+.items{
+	font-size: 16px;
+	font-family: 'Open Sans';
+	font-weight: 500;
+	color: #909090;
+	line-height: 10px;
+}
+
+.total-amount{
+	font-size: 36px;
+	font-family: 'Open Sans';
+	font-weight: 900;
+	color: #202020;
+}
+
+.botonMain{
+    cursor: pointer;
+    border: 1px solid #115dd8;
+    padding: 14px 30px;
+    border-radius: 200px;
+    color: #fff;
+    background: #115dd8;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    transition: 200ms;
+}
+.botonMain:hover {
+    background: #fff;
+    color: #115dd8;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .shopping-cart {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+    .item {
+      height: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .image img {
+      width: 50%;
+    }
+    .image,
+    .quantity,
+    .descriptionCart {
+      width: 100%;
+      text-align: center;
+      margin: 6px 0;
+    }
+    .buttons {
+      margin-right: 20px;
+    }
+    .delete-btn {
+      width: 20px;
+      height: 20px;
+      background: url("../Stateless/svg/delete-icn.svg") no-repeat center;
+      margin-left: 27px;
+    }
+    .total{
+      flex-wrap: wrap;
+    }
+}
