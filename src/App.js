@@ -7,6 +7,7 @@ import { BrowserRouter , Switch , Route } from 'react-router-dom'
 import Cart from "./components/Cart/cart";
 import CartContextProvider from "./context/cartContext";
 import Category from "./components/category/category";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
@@ -15,11 +16,11 @@ function App() {
         <CartContextProvider>
             <BrowserRouter>
             <Layout>
+                <ScrollToTop/>
                 <Switch>
-                    <Route exact path='/'>
+                    <Route exact path='/' >
                         <ItemListContainer
-                            greeting="JoyPlay"
-                            text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere tempore perspiciatis modi sint fugiat aut dolore vel, ex amet aliquam mollitia dignissimos pariatur deleniti voluptatem eligendi sit temporibus ut adipisci."/>
+                            greeting="JoyPlay"/>
                     </Route>
 
                     <Route exact path='/cart'>

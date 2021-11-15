@@ -13,70 +13,60 @@ const FormCart = () => {
     const [email, setEmail] = useState({campo: '' , valido: null})
     const [email2, setEmail2] = useState({campo: '' , valido: null})
 
-    const [dataCliente, setDataCliente] = useState()
-
     const expresiones = {
         nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
         correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
         telefono: /^\d{7,14}$/ // 7 a 14 numeros.
     }
-
-    const validacionDeDatos = (e) =>{
+        
+    const generateOrder = (e) => { 
         e.preventDefault()
         if (nombre.valido === 'true' &&
             telefono.valido === 'true' &&
             email.valido === 'true' &&
             email2.valido === 'true'
         ){
-            setDataCliente({  name:nombre.campo, 
+            let order = {}
+            order.buyer = {  name:nombre.campo, 
                                         phone:telefono.campo, 
-                                        email:email.campo })
-            generateOrder(dataCliente)
-            console.log(dataCliente);
-        } else{
-            alert('ingrese los datos correctamente')
-        }
-    }
+                                        email:email.campo }
+            order.total= total()
+            order.items = 
+                cartList.map(prodCart => {
+                    const id = prodCart.producto.id;
+                    const title = prodCart.producto.title;
+                    const amount = prodCart.cantidad;
+                    const price = prodCart.producto.price * prodCart.cantidad;
+                    return {id, title, price, amount}
+            })
+            const dbQuery = getFirestore()
+            const orderQuery = dbQuery.collection('orders')
+            orderQuery.add(order)
+            .then( r => alert('El id de la compra es: '+r.id) )
+            .catch(err => console.log( err))
+    
+            const prodsToUpdate = dbQuery.collection('Items')
+                .where(firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i => i.producto.id)
+            )
+            const batch = dbQuery.batch()
 
-    const generateOrder = (dataCliente) => { 
-        let order = {}
-        order.buyer = dataCliente
-        order.total= total()
-        order.items = 
-            cartList.map(prodCart => {
-                const id = prodCart.producto.id;
-                const title = prodCart.producto.title;
-                const amount = prodCart.cantidad;
-                const price = prodCart.producto.price * prodCart.cantidad;
-                return {id, title, price, amount}
-        })
-        console.log(order);
-        const dbQuery = getFirestore()
-        const orderQuery = dbQuery.collection('orders')
-        orderQuery.add(order)
-        .then( r => alert('El id de la compra es: '+r.id) )
-        .catch(err => console.log( err))
-
-        const prodsToUpdate = dbQuery.collection('Items')
-            .where(firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i => i.producto.id)
-        )
-        const batch = dbQuery.batch()
-        //restar stock al finalizar la compra
-        prodsToUpdate
-            .get()
-            .then(collection => {
-                        collection.docs.forEach(prodCart =>{
-                            batch.update(prodCart.ref, {
-                                stock: prodCart.data().stock - cartList.find( i => i.producto.id === prodCart.id ).cantidad
+            prodsToUpdate
+                .get()
+                .then(collection => {
+                            collection.docs.forEach(prodCart =>{
+                                batch.update(prodCart.ref, {
+                                    stock: prodCart.data().stock - cartList.find( i => i.producto.id === prodCart.id ).cantidad
+                                })
+                            }) 
+                            batch.commit().then(result => {
+                                console.log('resultado batch: ' + result);
+                                removeCart()
                             })
-                        }) 
-                        batch.commit().then(result => {
-                            console.log('resultado batch: ' + result);
-                            removeCart()
                         })
-                    })
-            .catch(err => console.log( err) )
-            console.log(order);
+                .catch(err => console.log( err) )
+        }else{
+            alert("Ingrese los datos correctamente")
+        }
     }
 
     const confirmacionEmail =()=>{
@@ -94,7 +84,7 @@ const FormCart = () => {
     }
 
     return (
-        <form onSubmit={validacionDeDatos}>
+        <form onSubmit={generateOrder}>
             <Input
                 estado={nombre}
                 setEstado={setNombre}
