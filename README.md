@@ -3,6 +3,10 @@
 _Este proyecto nace de toda una cursada en Coderhouse donde intento usar todo lo aprendido en este a través de una simulacion de un E-commerce de videojuegos._
 
 
+### Deploy 🖥️
+
+Puedes ver el deploy de la pagina aquí : https://joyplay.netlify.app/
+
 ### Instalación 🔧
 
 Antes que nada, hay que instalar las dependencias necesarias. Para ello diríjase al directorio del proyecto y escriba el siguiente comando en el terminal :
