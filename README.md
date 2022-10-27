@@ -1,8 +1,5 @@
 # Proyecto React JS - JoyPlay 🕹️
 
-_Este proyecto nace de toda una cursada en Coderhouse donde intento usar todo lo aprendido en este a través de una simulacion de un E-commerce de videojuegos._
-
-
 ### Deploy 🖥️
 
 Puedes ver el deploy de la pagina aquí : https://joyplay.netlify.app/
