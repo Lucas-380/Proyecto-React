@@ -1,4 +1,4 @@
-# Proyecto React JS - CoderHouse - JoyPlay 🕹️
+# Proyecto React JS - JoyPlay 🕹️
 
 _Este proyecto nace de toda una cursada en Coderhouse donde intento usar todo lo aprendido en este a través de una simulacion de un E-commerce de videojuegos._
 
